@@ -30,26 +30,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
+        textView1 = (TextView) findViewById(R.id.text1);
+        textView2 = (TextView) findViewById(R.id.text2);
+        textView3 = (TextView) findViewById(R.id.text3);
+        
+        editText1 = (EditText) findViewById(R.id.editText1);
+        editText2 = (EditText) findViewById(R.id.editText2);
+        editText3 = (EditText) findViewById(R.id.editText3);
 
-            textView1 = (TextView) findViewById(R.id.text1);
-            editText1 = (EditText) findViewById(R.id.editText1);
-            angle = Double.parseDouble(editText1.getText().toString());
-
-            textView2 = (TextView) findViewById(R.id.text2);
-            editText2 = (EditText) findViewById(R.id.editText2);
-            velocity = Double.parseDouble(editText2.getText().toString());
-
-            textView3 = (TextView) findViewById(R.id.text3);
-            editText3 = (EditText) findViewById(R.id.editText3);
-            time = Double.parseDouble(editText3.getText().toString());
-
-        } catch (
-                NumberFormatException e
-                ) {
-        }
+        angle = Double.parseDouble(editText1.getText().toString());
+        velocity = Double.parseDouble(editText2.getText().toString());
+        time = Double.parseDouble(editText3.getText().toString());
 
         button1 = (Button) findViewById(R.id.button1);
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
         radians = Math.toRadians(angle);
         double x = Math.sin(radians) * velocity * time;
         double y = Math.cos(radians) * velocity * time - (.5 * 9.8 * time * time);
-        return "(" + x + ", " + y + ")";
+        StringBuilder answer = new StringBuilder();
+        answer.append(x);
+        answer.append(y);
+        return answer.toString();
     }
 }

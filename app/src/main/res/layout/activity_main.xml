@@ -15,11 +15,23 @@
         android:layout_height="wrap_content"
         android:text="@string/angle" />
 
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:hint="@string/enter_a_value" />
+
     <TextView
         android:id="@+id/text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/velocity" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:hint="@string/enter_a_value" />
 
     <TextView
         android:id="@+id/text3"
@@ -27,28 +39,22 @@
         android:layout_height="wrap_content"
         android:text="@string/time" />
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:hint="@string/enter_a_value"/>
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:hint="@string/enter_a_value"/>
 
     <EditText
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:hint="@string/enter_a_value"/>
+        android:hint="@string/enter_a_value" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/calculate" />
+
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
