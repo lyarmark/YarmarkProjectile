@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView1;
     private TextView textView2;
     private TextView textView3;
+    private TextView textView4;
     private EditText editText1;
     private EditText editText2;
     private EditText editText3;
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         textView1 = (TextView) findViewById(R.id.text1);
         textView2 = (TextView) findViewById(R.id.text2);
         textView3 = (TextView) findViewById(R.id.text3);
-        
+        textView4 = (TextView) findViewById(R.id.text4);
+
         editText1 = (EditText) findViewById(R.id.editText1);
         editText2 = (EditText) findViewById(R.id.editText2);
         editText3 = (EditText) findViewById(R.id.editText3);
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView1.setText(calculate());
+                textView4.setText(calculate());
             }
         });
 
