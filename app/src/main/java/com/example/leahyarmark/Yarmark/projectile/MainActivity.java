@@ -8,19 +8,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textView1;
-    private TextView textView2;
-    private TextView textView3;
-    private TextView textView4;
-    private EditText editText1;
-    private EditText editText2;
-    private EditText editText3;
+    private TextView angleView;
+    private TextView velocityView;
+    private TextView timeView;
+    private TextView answerView;
+    private EditText angleEdit;
+    private EditText velocityEdit;
+    private EditText timeEdit;
 
-    private Button button1;
+    private Button calculateButton;
 
 
     @Override
@@ -29,32 +30,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(imageView);
-        //Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(imageView);
 
-        textView1 = (TextView) findViewById(R.id.text1);
-        textView2 = (TextView) findViewById(R.id.text2);
-        textView3 = (TextView) findViewById(R.id.text3);
-        textView4 = (TextView) findViewById(R.id.text4);
+        angleView = (TextView) findViewById(R.id.text1);
+        velocityView = (TextView) findViewById(R.id.text2);
+        timeView = (TextView) findViewById(R.id.text3);
+        answerView = (TextView) findViewById(R.id.text4);
 
-        editText1 = (EditText) findViewById(R.id.editText1);
-        editText2 = (EditText) findViewById(R.id.editText2);
-        editText3 = (EditText) findViewById(R.id.editText3);
+        calculateButton = (Button) findViewById(R.id.button1);
 
-
-        button1 = (Button) findViewById(R.id.button1);
-
-
-        button1.setOnClickListener(new View.OnClickListener() {
-
-            double angle = Double.parseDouble(editText1.getText().toString());
-            double velocity = Double.parseDouble(editText2.getText().toString());
-            double time = Double.parseDouble(editText3.getText().toString());
-
-            final Projectile p = new Projectile(angle, velocity, time);
+        calculateButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                textView4.setText("(" + p.getX() + ", " + p.getY() + ")");
+                angleEdit = (EditText) findViewById(R.id.editText1);
+                velocityEdit = (EditText) findViewById(R.id.editText2);
+                timeEdit = (EditText) findViewById(R.id.editText3);
+
+                double angle = Double.parseDouble(angleEdit.getText().toString());
+                double velocity = Double.parseDouble(velocityEdit.getText().toString());
+                double time = Double.parseDouble(timeEdit.getText().toString());
+
+                final Projectile p = new Projectile(angle, velocity, time);
+                answerView.setText("(" + p.getX() + ", " + p.getY() + ")");
             }
         });
     }
