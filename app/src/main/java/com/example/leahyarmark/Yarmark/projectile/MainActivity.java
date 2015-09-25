@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,15 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
     private Button button1;
 
-    private double angle;
-    private double velocity;
-    private double time;
-    private double radians;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(imageView);
+        //Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(imageView);
 
         textView1 = (TextView) findViewById(R.id.text1);
         textView2 = (TextView) findViewById(R.id.text2);
@@ -40,19 +40,23 @@ public class MainActivity extends AppCompatActivity {
         editText2 = (EditText) findViewById(R.id.editText2);
         editText3 = (EditText) findViewById(R.id.editText3);
 
-        angle = Double.parseDouble(editText1.getText().toString());
-        velocity = Double.parseDouble(editText2.getText().toString());
-        time = Double.parseDouble(editText3.getText().toString());
 
         button1 = (Button) findViewById(R.id.button1);
 
+
         button1.setOnClickListener(new View.OnClickListener() {
+
+            double angle = Double.parseDouble(editText1.getText().toString());
+            double velocity = Double.parseDouble(editText2.getText().toString());
+            double time = Double.parseDouble(editText3.getText().toString());
+
+            final Projectile p = new Projectile(angle, velocity, time);
+
             @Override
             public void onClick(View v) {
-                textView4.setText(calculate());
+                textView4.setText("(" + p.getX() + ", " + p.getY() + ")");
             }
         });
-
     }
 
     @Override
@@ -75,15 +79,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public String calculate() {
-        radians = Math.toRadians(angle);
-        double x = Math.sin(radians) * velocity * time;
-        double y = Math.cos(radians) * velocity * time - (.5 * 9.8 * time * time);
-        StringBuilder answer = new StringBuilder();
-        answer.append(x);
-        answer.append(y);
-        return answer.toString();
     }
 }

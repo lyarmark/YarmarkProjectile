@@ -1,0 +1,12 @@
+log is the first line of defense if the program crashes
+it can show the stack trace that you can go to
+
+using the android debugger:
+
+put a break point by clicking once in the gutter
+run the application:
+
+instead of clicking run, click the bug
+this runs the entire program in debug mode
+this is useful if you want to debug something in the onCreate
+
