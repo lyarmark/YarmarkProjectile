@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         double velocity = Double.parseDouble(editText2.getText().toString());
         double time = Double.parseDouble(editText3.getText().toString());
 
-        final Projectile p = new Projectile(angle, velocity, time);
         Intent intent = new Intent(this, AnswerActivity.class);
 
         //send the angle, velocity, time to the intent

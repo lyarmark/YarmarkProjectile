@@ -29,7 +29,9 @@ public class AnswerActivity extends AppCompatActivity {
         double velocity = intent.getDoubleExtra("Velocity", 0.0);
         double time = intent.getDoubleExtra("Time", .0);
 
+        final Projectile p = new Projectile(angle, velocity, time);
         answer = (TextView) findViewById(R.id.answer);
+        answer.setText("(" + p.getX() + ", " + p.getY() + ")");
         //for every activity in the app, need it in the manifest
     }
 }
