@@ -6,5 +6,7 @@
     <string name="velocity">Velocity: </string>
     <string name="time">Time: </string>
     <string name="calculate">Calculate</string>
-    <string name="enter_a_value">Enter a value:</string>
+    <string name="enter_an_angle">Enter a value:</string>
+    <string name="enter_a_velocity">Enter a velocity:</string>
+    <string name="enter_a_time">Enter a time</string>
 </resources>

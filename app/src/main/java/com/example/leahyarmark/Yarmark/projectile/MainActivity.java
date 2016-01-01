@@ -1,6 +1,7 @@
 package com.example.leahyarmark.Yarmark.projectile;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,11 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView2;
     private TextView textView3;
     private TextView answer;
-    private EditText editText1;
-    private EditText editText2;
-    private EditText editText3;
+    private EditText editTextAngle;
+    private EditText editTextVelocity;
+    private EditText editTextTime;
     private ImageView image;
     private Button button1;
+    private SharedPreferences sharedPreferences;
 
 
     @Override
@@ -40,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         textView2 = (TextView) findViewById(R.id.text2);
         textView3 = (TextView) findViewById(R.id.text3);
 
-        editText1 = (EditText) findViewById(R.id.editText1);
-        editText2 = (EditText) findViewById(R.id.editText2);
-        editText3 = (EditText) findViewById(R.id.editText3);
+        editTextAngle = (EditText) findViewById(R.id.editTextAngle);
+        editTextVelocity = (EditText) findViewById(R.id.editTextVelocity);
+        editTextTime = (EditText) findViewById(R.id.editTextTime);
 
         button1 = (Button) findViewById(R.id.button1);
 
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.showAnswer();
             }
         });
+        sharedPreferences = this.getSharedPreferences("DEFAULT", MODE_PRIVATE);
     }
 
     @Override
@@ -80,9 +83,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAnswer() {
 
-        double angle = Double.parseDouble(editText1.getText().toString());
-        double velocity = Double.parseDouble(editText2.getText().toString());
-        double time = Double.parseDouble(editText3.getText().toString());
+        double angle = Double.parseDouble(editTextAngle.getText().toString());
+        double velocity = Double.parseDouble(editTextVelocity.getText().toString());
+        double time = Double.parseDouble(editTextTime.getText().toString());
 
         Intent intent = new Intent(this, AnswerActivity.class);
 
@@ -92,5 +95,27 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("Time", time);
 
         startActivity(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //blank is default so hint text will show
+        //if there's stored data, that will show instead
+        editTextAngle.setText(sharedPreferences.getString("ANGLE", ""));
+        editTextVelocity.setText(sharedPreferences.getString("VELOCITY", ""));
+        editTextTime.setText(sharedPreferences.getString("TIME", ""));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("ANGLE", editTextAngle.getText().toString());
+        editor.putString("VELOCITY", editTextVelocity.getText().toString());
+        editor.putString("TIME", editTextTime.getText().toString());
+
+        editor.apply();
     }
 }
